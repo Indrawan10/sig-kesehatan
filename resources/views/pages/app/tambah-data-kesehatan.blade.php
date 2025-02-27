@@ -91,8 +91,8 @@
 
                             <div class="form-group">
                                 <label>Nomor HP/Telp</label>
-                                <input type="number" class="form-control @error('nomor_hp') is-invalid @enderror"
-                                    name="nomor_hp" value="{{ old('nomor_hp') }}">
+                                <input type="tel" class="form-control @error('nomor_hp') is-invalid @enderror"
+                                    name="nomor_hp" value="{{ old('nomor_hp') }}" maxlength="13">
                                 @error('nomor_hp')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror

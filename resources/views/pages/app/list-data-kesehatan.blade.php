@@ -38,6 +38,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama Tempat</th>
+                                        <th>Nomor Handphone</th>
                                         <th>Jenis Fasilitas</th>
                                         <th>Jam Operasional</th>
                                         <th>Alamat</th>
@@ -49,13 +50,14 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $kesehatan->nama_tempat }}</td>
+                                            <td>{{ $kesehatan->nomor_hp }}</td>
                                             <td>{{ $kesehatan->jenis_fasilitas }}</td>
                                             <td>{{ $kesehatan->jam_operasional }}</td>
                                             <td>{{ $kesehatan->alamat }}</td>
                                             <td>
-                                                <div class="btn-group" role="group">
+                                                <div class="btn-group d-flex flex-column" role="group">
                                                     <!-- Tombol Edit -->
-                                                    <button type="button" class="btn btn-warning btn-sm edit-btn"
+                                                    <button type="button" class="btn btn-warning btn-sm edit-btn mb-2"
                                                         data-toggle="modal" data-target="#editModal"
                                                         data-id="{{ $kesehatan->id }}"
                                                         data-nama_tempat="{{ $kesehatan->nama_tempat }}"
