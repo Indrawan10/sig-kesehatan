@@ -39,6 +39,10 @@
                         <a class="nav-link"
                             href="{{ route('tambah.data.kesehatan') }}">Tambah Data Kesehatan</a>
                     </li>
+                    <li>
+                        <a class="nav-link"
+                            href="{{ route('list.data.kesehatan') }}">List Data Kesehatan</a>
+                    </li>
                 </ul>
             </li>
     </aside>
