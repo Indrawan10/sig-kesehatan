@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('pages.auth.auth-login');
+    return view('pages.app.dashboard-home');
 });
 
 Route::middleware(['auth'])->group(function () {
