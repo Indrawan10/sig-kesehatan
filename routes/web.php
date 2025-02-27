@@ -19,6 +19,10 @@ Route::get('/', function () {
     return view('pages.app.dashboard-home');
 });
 
+
+
+
+
 Route::middleware(['auth'])->group(function () {
     Route::get('home', function () {
         return view('pages.app.dashboard-siakad', ['type_menu' => '']);
@@ -26,6 +30,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('user', UserController::class);
 });
 
+Route::get('/api/kesehatan', function () {
+    return response()->json(App\Models\Kesehatan::all());
+})->name('api.kesehatan');
 
 Route::get('/tambah-data-kesehatan', [KesehatanController::class, 'create'])->name('tambah.data.kesehatan');
 Route::post('/tambah-data-kesehatan', [KesehatanController::class, 'store']);

@@ -5,6 +5,9 @@
     <title>Sistem Informasi Geografis Wisata</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 </head>
 <body class="bg-gray-100 text-white">
     <div class="relative">
@@ -17,11 +20,11 @@
         <div class="absolute inset-0 bg-black opacity-50"></div>
 
         <!-- Navbar -->
-        <nav class="bg-gray shadow-md fixed top-0 left-0 w-full z-50">
+        <nav class="bg-black opacity-70 shadow-md fixed top-0 left-0 w-full z-50">
             <div class="container mx-auto px-6 py-3 flex justify-between items-center">
                 <a href="/" class="text-xl font-bold text-gray-800">
-          <img src="https://logos.flamingtext.com/City-Logos/Losari-Logo.png" alt="Logo" class="h-8">
-        </a>
+                    <img src="https://logos.flamingtext.com/City-Logos/Losari-Logo.png" alt="Logo" class="h-8">
+                </a>
 
                 <!-- Menu Toggle Button -->
                 <button id="menu-toggle" class="md:hidden text-gray-700 focus:outline-none">
@@ -57,36 +60,69 @@
         </div>
     </div>
 
-    <footer class="bg-gray-900 text-white py-8">
-  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-    <div class="flex flex-wrap justify-between items-center">
-      <!-- Logo & About -->
-      <div class="max-w-md">
-        <h2 class="text-2xl font-bold">Losari</h2>
-        <p class="mt-2 text-gray-400 text-justify">
-          Kecamatan Losari adalah salah satu kecamatan yang terletak di Kabupaten Brebes, Jawa Tengah, berbatasan langsung dengan Provinsi Jawa Barat.
-        </p>
-      </div>
-
-      <!-- Social Media -->
-      <div class="mt-4 md:mt-0">
-        <h3 class="text-lg font-semibold text-right">Ikuti Kami</h3>
-        <div class="mt-2 flex space-x-4">
-          <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
-          <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin"></i></a>
+    <!-- Map Section -->
+    <section class="py-10">
+        <div class="container mx-auto px-6 md:px-12 lg:px-16">
+            <h2 class="text-2xl font-bold text-gray-900 text-center mb-4">Peta Fasilitas Kesehatan di Kecamatan Losari</h2>
+            <div id="map" class="w-full h-96 rounded-lg shadow-lg"></div>
         </div>
-      </div>
-    </div>
+    </section>
 
-    <div class="border-t border-gray-700 mt-6 pt-4 text-center text-gray-400">
-      &copy; 2025 Sistem Informasi Geografis. All Rights Reserved.
-    </div>
-  </div>
-</footer>
+    <footer class="bg-gray-900 text-white py-8 mt-10">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+            <div class="flex flex-wrap justify-between items-center">
+                <!-- Logo & About -->
+                <div class="max-w-md">
+                    <h2 class="text-2xl font-bold">Losari</h2>
+                    <p class="mt-2 text-gray-400 text-justify">
+                        Kecamatan Losari adalah salah satu kecamatan yang terletak di Kabupaten Brebes, Jawa Tengah, berbatasan langsung dengan Provinsi Jawa Barat.
+                    </p>
+                </div>
 
+                <!-- Social Media -->
+                <div class="mt-4 md:mt-0">
+                    <h3 class="text-lg font-semibold text-right">Ikuti Kami</h3>
+                    <div class="mt-2 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
 
+            <div class="border-t border-gray-700 mt-6 pt-4 text-center text-gray-400">
+                &copy; 2025 Sistem Informasi Geografis. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
 
+    <!-- Leaflet JS -->
+     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([-6.3833, 108.8667], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        fetch("{{ route('api.kesehatan') }}")
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(item => {
+                    var marker = L.marker([item.latitude, item.longitude], {
+                        icon: L.icon({
+                            iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${item.marker_color}.png`,
+                            iconSize: [25, 41],
+                            iconAnchor: [12, 41],
+                            popupAnchor: [1, -34],
+                            shadowSize: [41, 41]
+                        })
+                    }).addTo(map)
+                    .bindPopup(`<b>${item.nama_tempat}</b><br>${item.jenis_fasilitas}<br>${item.alamat}`);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
 </body>
 </html>

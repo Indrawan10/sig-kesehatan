@@ -18,9 +18,11 @@ return new class extends Migration
             $table->string('jam_operasional');
             $table->text('deskripsi');
             $table->string('alamat');
+            $table->string('nomor_hp', 15);
             $table->decimal('latitude', 10, 8);  // menyimpan nilai latitude
             $table->decimal('longitude', 11, 8); // menyimpan nilai longitude
             $table->enum('marker_color', ['red', 'blue', 'green', 'orange'])->default('red');
+
             $table->timestamps();
         });
     }

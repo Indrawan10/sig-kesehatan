@@ -14,6 +14,7 @@ class Kesehatan extends Model
         'jam_operasional',
         'deskripsi',
         'alamat',
+        'nomor_hp',
         'latitude',
         'longitude',
         'marker_color',

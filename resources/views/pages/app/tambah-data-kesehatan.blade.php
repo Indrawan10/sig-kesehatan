@@ -26,21 +26,6 @@
 
             <div class="section-body">
                 <div class="card">
-                    @if (session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
 
                     <form action="{{ route('tambah.data.kesehatan') }}" method="POST">
                         @csrf
@@ -100,6 +85,15 @@
                                 <input type="text" class="form-control @error('alamat') is-invalid @enderror"
                                     name="alamat" value="{{ old('alamat') }}">
                                 @error('alamat')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label>Nomor HP/Telp</label>
+                                <input type="number" class="form-control @error('nomor_hp') is-invalid @enderror"
+                                    name="nomor_hp" value="{{ old('nomor_hp') }}">
+                                @error('nomor_hp')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
