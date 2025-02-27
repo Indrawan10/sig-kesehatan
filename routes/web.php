@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KesehatanController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,23 +26,12 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('user', UserController::class);
 });
 
-Route::get('/tambah-data-kesehatan', function () {
-    return view('pages.app.tambah-data-kesehatan', ['type_menu' => '']);
-})->name('tambah.data.kesehatan');
 
-
-// Route::get('/login', function () {
-//     return view('pages.auth.auth-login');
-// })->name('login');
-
-// Route::get('/register', function () {
-//     return view('pages.auth.auth-register');
-// })->name('register');
-
-// Route::get('/forgot', function () {
-//     return view('pages.auth.auth-forgot-password');
-// })->name('forgot');
-
-// Route::get('/reset-password', function () {
-//     return view('pages.auth.auth-reset-password');
-// })->name('reset-password');
+Route::get('/tambah-data-kesehatan', [KesehatanController::class, 'create'])->name('tambah.data.kesehatan');
+Route::post('/tambah-data-kesehatan', [KesehatanController::class, 'store']);
+Route::get('/list-data-kesehatan', [KesehatanController::class, 'index'])->name('list.data.kesehatan');
+// Route untuk menampilkan halaman edit
+Route::get('/list-data-kesehatan/{id}/edit', [KesehatanController::class, 'edit'])->name('list.data.kesehatan.edit');
+// Route untuk update data
+Route::put('/list-data-kesehatan/{id}', [KesehatanController::class, 'update'])->name('list.data.kesehatan.update');
+Route::delete('/list-data-kesehatan/{id}', [KesehatanController::class, 'destroy'])->name('list.data.kesehatan.destroy');
