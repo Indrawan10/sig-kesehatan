@@ -34,7 +34,7 @@
                 <!-- Menu -->
                 <div id="menu" class="hidden md:flex space-x-4">
                     <a href="/" class="text-white hover:text-blue-500 px-4">Home</a>
-                    <a href="#" class="text-white hover:text-blue-500 px-4">Data Kesehatan</a>
+                    <a href="{{ route('data.tempat.kesehatan') }}" class="text-white hover:text-blue-500 px-4">Data Kesehatan</a>
                     <a href="{{ route('login') }}" class="text-white hover:text-blue-500 px-4">Login</a>
                 </div>
             </div>
@@ -42,7 +42,7 @@
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="hidden md:hidden bg-white p-4">
                 <a href="/" class="block text-white hover:text-blue-500 py-2">Home</a>
-                <a href="#" class="block text-white hover:text-blue-500 py-2">Data Kesehatan</a>
+                <a href="{{ route('data.tempat.kesehatan') }}" class="block text-white hover:text-blue-500 py-2">Data Kesehatan</a>
                 <a href="{{ route('login') }}" class="block text-white hover:text-blue-500 py-2">Login</a>
             </div>
         </nav>

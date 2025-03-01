@@ -34,6 +34,7 @@ Route::get('/api/kesehatan', function () {
     return response()->json(App\Models\Kesehatan::all());
 })->name('api.kesehatan');
 
+Route::get('/data-tempat-kesehatan', [KesehatanController::class, 'showDataTempat'])->name('data.tempat.kesehatan');
 Route::get('/tambah-data-kesehatan', [KesehatanController::class, 'create'])->name('tambah.data.kesehatan');
 Route::post('/tambah-data-kesehatan', [KesehatanController::class, 'store']);
 Route::get('/list-data-kesehatan', [KesehatanController::class, 'index'])->name('list.data.kesehatan');

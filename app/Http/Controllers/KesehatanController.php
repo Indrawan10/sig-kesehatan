@@ -12,6 +12,13 @@ class KesehatanController extends Controller
         $kesehatans = Kesehatan::all();
         return view('pages.app.list-data-kesehatan', compact('kesehatans'));
     }
+
+    public function showDataTempat()
+    {
+        $kesehatans = Kesehatan::all();
+        return view('pages.app.data-tempat-kesehatan', compact('kesehatans'));
+    }
+    
     public function create()
     {
         return view('pages.app.tambah-data-kesehatan'); // Pastikan ini sesuai dengan nama view Anda
