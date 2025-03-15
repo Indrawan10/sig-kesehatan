@@ -1,10 +1,10 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="index.html">SIAKAD</a>
+            <a href="{{ route('home') }}">SIG</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">SKD</a>
+            <a href="{{ route('home') }}">SIG</a>
         </div>
         <ul class="sidebar-menu">
 
@@ -14,7 +14,7 @@
                 <ul class="dropdown-menu">
                     <li>
                         <a class="nav-link"
-                            href="{{ url('dashboard-general-dashboard') }}">General Dashboard</a>
+                            href="{{ route('home') }}">General Dashboard</a>
                     </li>
 
                 </ul>

@@ -31,10 +31,10 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4>All Users</h4>
-                                <div class="section-header-button">
+                                {{-- <div class="section-header-button">
                                     <a href="{{route('user.create')}}"
                                         class="btn btn-primary">New User</a>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="card-body">
 
@@ -79,10 +79,10 @@
                                             <td>{{$user->created_at}}</td>
                                             <td>
                                                 <div class="d-flex justify-content-center">
-                                                    <a href="{{route('user.edit', $user->id)}}" class="btn btn-sm btn-info btn-icon">
+                                                    {{-- <a href="{{route('user.edit', $user->id)}}" class="btn btn-sm btn-info btn-icon">
                                                         <i class="fas fa-edit"></i>
                                                         Edit
-                                                    </a>
+                                                    </a> --}}
 
                                                     <form action="{{route('user.destroy', $user->id)}}"
                                                         method="POST"

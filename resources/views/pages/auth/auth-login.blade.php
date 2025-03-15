@@ -42,12 +42,12 @@
                     <div class="d-block">
                         <label for="password"
                             class="control-label">Password</label>
-                        <div class="float-right">
+                        {{-- <div class="float-right">
                             <a href="auth-forgot-password.html"
                                 class="text-small">
                                 Forgot Password?
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                     <input id="password"
                         type="password"
@@ -64,17 +64,7 @@
                     @enderror
                 </div>
 
-                <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox"
-                            name="remember"
-                            class="custom-control-input"
-                            tabindex="3"
-                            id="remember-me">
-                        <label class="custom-control-label"
-                            for="remember-me">Remember Me</label>
-                    </div>
-                </div>
+
 
                 <div class="form-group">
                     <button type="submit"
@@ -88,9 +78,9 @@
 
         </div>
     </div>
-    <div class="text-muted mt-5 text-center">
+    {{-- <div class="text-muted mt-5 text-center">
         Don't have an account? <a href="{{ route('register') }}">Create One</a>
-    </div>
+    </div> --}}
 @endsection
 
 @push('scripts')

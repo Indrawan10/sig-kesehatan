@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
     <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
 <body class="bg-gray-100 text-white">
     <div class="relative">
-        <img src="https://storage.googleapis.com/a1aa/image/-85RnCUPZTTNz2R6YHuM9meXKuMm77aWH7SCCcQ9MCY.jpg"
+           <img src="{{ asset('img/kesehatan.jpg') }}"
+
              alt="Healthcare theme with medical equipment and stethoscope"
              class="w-full h-screen object-cover"
              width="1920" height="1080"/>
@@ -23,7 +24,7 @@
         <nav class="bg-black opacity-70 shadow-md fixed top-0 left-0 w-full z-50">
             <div class="container mx-auto px-6 py-3 flex justify-between items-center">
                 <a href="/" class="text-xl font-bold text-gray-800">
-                    <img src="https://logos.flamingtext.com/City-Logos/Losari-Logo.png" alt="Logo" class="h-8">
+                    <img src="{{ asset('img/Losari-Logo.png') }}" alt="Logo" class="h-8">
                 </a>
 
                 <!-- Menu Toggle Button -->
@@ -40,7 +41,7 @@
             </div>
 
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden bg-white p-4">
+            <div id="mobile-menu" class="hidden md:hidden bg-black p-4">
                 <a href="/" class="block text-white hover:text-blue-500 py-2">Home</a>
                 <a href="{{ route('data.tempat.kesehatan') }}" class="block text-white hover:text-blue-500 py-2">Data Kesehatan</a>
                 <a href="{{ route('login') }}" class="block text-white hover:text-blue-500 py-2">Login</a>
@@ -54,9 +55,10 @@
             <p class="text-sm md:text-base lg:text-lg mt-4 max-w-lg">
                 Sistem informasi ini merupakan aplikasi pemetaan geografis tempat kesehatan di wilayah Losari. Aplikasi ini memuat informasi dan lokasi dari tempat kesehatan di Losari.
             </p>
-            <button class="mt-6 px-6 py-3 bg-yellow-500 text-black font-semibold rounded hover:bg-yellow-600">
-                LIHAT DETAIL
-            </button>
+            <a href="https://id.wikipedia.org/wiki/Losari,_Brebes" class="mt-6 px-6 py-3 bg-yellow-500 text-black font-semibold rounded hover:bg-yellow-600">
+    LIHAT DETAIL
+</a>
+
         </div>
     </div>
 
@@ -98,9 +100,13 @@
     </footer>
 
     <!-- Leaflet JS -->
-     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
     <script>
-        var map = L.map('map').setView([-6.3833, 108.8667], 13);
+        document.addEventListener('DOMContentLoaded', function() {
+        var map = L.map('map').setView([-6.8515333, 108.8667], 13);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors'
@@ -123,6 +129,11 @@
                 });
             })
             .catch(error => console.error('Error fetching data:', error));
+
+         document.getElementById('menu-toggle').addEventListener('click', function () {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    });
     </script>
 </body>
 </html>

@@ -30,7 +30,7 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white p-4">
+        <div id="mobile-menu" class="hidden md:hidden bg-black p-4">
             <a href="/" class="block text-white hover:text-blue-500 py-2">Home</a>
             <a href="#" class="block text-white hover:text-blue-500 py-2">Data Kesehatan</a>
             <a href="{{ route('login') }}" class="block text-white hover:text-blue-500 py-2">Login</a>
@@ -248,6 +248,10 @@
                 }
             }, 300);
         }
+
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
     </script>
 </body>
 

@@ -57,7 +57,7 @@
                                             <td>
                                                 <div class="btn-group d-flex flex-column" role="group">
                                                     <!-- Tombol Edit -->
-                                                    <button type="button" class="btn btn-warning btn-sm edit-btn mb-2"
+                                                    <button type="button" class="btn btn-info btn-sm edit-btn mb-2"
                                                         data-toggle="modal" data-target="#editModal"
                                                         data-id="{{ $kesehatan->id }}"
                                                         data-nama_tempat="{{ $kesehatan->nama_tempat }}"
@@ -77,8 +77,9 @@
                                                         method="POST" class="d-inline delete-form">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-sm delete-btn">
-                                                            <i class="fas fa-trash"></i> Hapus
+                                                        <button type= "submit" class="btn btn-sm btn-danger btn-icon confirm-delete">
+                                                            <i class="fas fa-times"></i>
+                                                            Delete
                                                         </button>
                                                     </form>
                                                 </div>
